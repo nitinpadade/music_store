@@ -1,0 +1,74 @@
+﻿@model IEnumerable<App.Core.QueryModels.OrderList>
+@using System.Configuration
+@{
+    ViewBag.Title = "Index";
+}
+
+<h4>Order List</h4>
+
+<div class="col-md-12">
+    <table class="table">
+        <tr>
+            <th>
+                Order Id
+            </th>
+            <th>
+                Order Date
+            </th>
+            <th>
+                Total Items
+            </th>
+            <th style="text-align:right;">
+                Price
+            </th>
+            <th style="text-align:right;">
+                Action
+            </th>
+        </tr>
+        @{
+            decimal total = 0;
+        }
+        @foreach (var item in Model)
+        {
+            total = total + item.Price;
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+                <td style="text-align:right;">
+                    $ @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td style="text-align:right;">
+                    <a href='@ConfigurationManager.AppSettings["UrlPath"].ToString()Orders/ViewOrder/@item.OrderId'>
+                        @*<img src="@Url.Content("~/Images/removefromcart.png")" title="Remove from Cart" />*@
+                        View
+                    </a>
+                </td>
+            </tr>
+        }
+
+        <tr>
+            <th>
+
+            </th>
+            <th>
+
+            </th>
+            <th style="text-align:right;">
+                Total:
+            </th>
+            <th style="text-align:right;">
+                $ @total
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </table>    
+</div>

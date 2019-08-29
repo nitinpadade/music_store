@@ -1,0 +1,74 @@
+﻿@model IEnumerable<App.Core.QueryModels.CartDetails>
+@using System.Configuration
+
+@{
+    ViewBag.Title = "ViewCart";
+}
+
+<h4>Cart Details</h4>
+
+<div class="col-md-12">
+    <table class="table">
+        <tr>
+            <th>
+                Album
+            </th>
+            <th>
+                Genre
+            </th>
+            <th style="text-align:right;">
+                Price
+            </th>
+            <th style="text-align:right;">
+                Action
+            </th>
+        </tr>
+        @{
+            decimal total = 0;
+        }
+        @foreach (var item in Model)
+        {
+            total = total + item.Price;
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Album)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genre)
+                </td>
+                <td style="text-align:right;">
+                    $ @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td style="text-align:right;">
+                    <a href='@ConfigurationManager.AppSettings["UrlPath"].ToString()AddToCart/RemoveFromCart/@item.RecordId'>
+                        <img src="@Url.Content("~/Images/removefromcart.png")" title="Remove from Cart" />
+                    </a>
+                </td>
+            </tr>
+        }
+
+        <tr>
+            <th>
+
+            </th>
+            <th style="text-align:right;">
+                Total:
+            </th>
+            <th style="text-align:right;">
+                $ @total
+            </th>
+            <th>
+
+            </th>
+        </tr>
+
+    </table>
+    @if (Model.Count() > 0)
+    {
+        <div class="form-group">
+            <a href='@ConfigurationManager.AppSettings["UrlPath"].ToString()AddToCart/Checkout' class="btn btn-primary btn-group-sm btn-group">Checkout</a>
+        </div>
+    }
+</div>
+
+

@@ -1,0 +1,55 @@
+﻿@model App.Core.QueryModels.AlbumList
+@using App.Core
+@using System.Configuration
+
+@{
+    ViewBag.Title = "Album";
+}
+
+<h4>Album</h4>
+<hr>
+<p style="text-align: right;">
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+
+@Html.HiddenFor(model => model.AlbumId)
+
+<div class="col-sm-4 col-lg-4 col-md-4">
+    <div class="thumbnail">
+        <div class="caption">
+            @if (!string.IsNullOrEmpty(LoginUserInfo.Name))
+            {
+                if (LoginUserInfo.RoleId != 1)
+                {
+                    <a href="#" class="pull-right" style="font-size:small; color:blue;" id="add2Cart" title="@Model.AlbumId">
+                        <img src="@Url.Content("~/Images/add2cart.png")" title="Add to Cart" />
+                    </a>
+                }
+            }
+            <h4>
+                <a href="#">$@Model.Price</a>
+            </h4>
+            <img src="@Url.Content("~/Images/placeholder.gif")" style="width:100px; height:75px;" />
+
+            <p style="padding: 9px;">
+                @Html.ActionLink(Model.Title, "Album", new { id = Model.AlbumId }, new { @style = "color:green; font-weight:normal;" })
+            </p>
+            <b style="padding: 9px;">Artist: </b><b style="color:rgb(209,117,129); font-weight:normal">@Model.Artist  </b>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".pull-right").click(function () {
+
+            var id = parseInt(this.title, 0);
+            var url = '@ConfigurationManager.AppSettings["UrlPath"].ToString()' + "AddToCart/Add/" + id;
+            $.get(url, null, function (data) {
+                location.reload();
+            });
+        });
+    });
+</script>

@@ -1,0 +1,34 @@
+﻿@model App.Core.QueryModels.ValidationParameters
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <!-- Simple Login - START -->
+    <form class="col-md-12">
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.Email, new { @class = "form-control input-lg", @placeholder = "Email" })
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+        <div class="form-group">
+            @Html.PasswordFor(model => model.Password, new { @class = "form-control input-lg", @placeholder = "Password" })
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Sign In</button>
+            <br />
+            <span class="pull-right"><a href="#">@Html.ActionLink("New Registration", "Create", "Register")</a></span>
+        </div>
+    </form>
+    <!-- Simple Login - END -->
+}
+
+
+

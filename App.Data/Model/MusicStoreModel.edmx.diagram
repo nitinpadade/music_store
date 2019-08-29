@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9e86083ea49a4851804146052671f93c" Name="Diagram1">
+        <EntityTypeShape EntityType="MusicStoreModel.Album" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicStoreModel.Artist" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicStoreModel.Cart" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicStoreModel.Genre" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicStoreModel.Role" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicStoreModel.User" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <AssociationConnector Association="MusicStoreModel.FK__Album__ArtistId__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="MusicStoreModel.FK_Album_Genre" ManuallyRouted="false" />
+        <AssociationConnector Association="MusicStoreModel.FK_Cart_Album" ManuallyRouted="false" />
+        <AssociationConnector Association="MusicStoreModel.FK_Cart_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MusicStoreModel.FK_Users_Role" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MusicStoreModel.Order" Width="1.5" PointX="5.25" PointY="8.375" />
+        <EntityTypeShape EntityType="MusicStoreModel.OrderDetail" Width="1.5" PointX="7.5" PointY="5.625" />
+        <AssociationConnector Association="MusicStoreModel.FK_InvoiceLine_Album" />
+        <AssociationConnector Association="MusicStoreModel.FK__InvoiceLi__Invoi__2F10007B" />
+        <AssociationConnector Association="MusicStoreModel.FK_Order_User" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

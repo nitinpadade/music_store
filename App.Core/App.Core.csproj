@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{431B122B-A3C9-4BD7-A3B5-BE11ABD99D54}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>App.Core</RootNamespace>
+    <AssemblyName>App.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\packages\Castle.Windsor.3.3.0\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CartIdGenerator.cs" />
+    <Compile Include="CommandModels\AddToCart.cs" />
+    <Compile Include="CommandModels\AlbumCrud.cs" />
+    <Compile Include="CommandModels\DropComandList.cs" />
+    <Compile Include="CommandModels\RegisterUser.cs" />
+    <Compile Include="Command\AddToCartCmd.cs" />
+    <Compile Include="Command\AlbumCmd.cs" />
+    <Compile Include="Command\RegisterUserCmd.cs" />
+    <Compile Include="Command\SubmitOrderCmd.cs" />
+    <Compile Include="Contracts\IAuthenticateService.cs" />
+    <Compile Include="Contracts\ICartService.cs" />
+    <Compile Include="Contracts\ICrudService.cs" />
+    <Compile Include="Contracts\IDropListService.cs" />
+    <Compile Include="Contracts\IOrderService.cs" />
+    <Compile Include="Contracts\IOrdersQuery.cs" />
+    <Compile Include="Contracts\IStoreService.cs" />
+    <Compile Include="Contracts\IUserValidate.cs" />
+    <Compile Include="CoreFactories.cs" />
+    <Compile Include="LoginUserInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryModels\AlbumList.cs" />
+    <Compile Include="QueryModels\CartDetails.cs" />
+    <Compile Include="QueryModels\DetailsOrder.cs" />
+    <Compile Include="QueryModels\DetailsOrderItems.cs" />
+    <Compile Include="QueryModels\OrderList.cs" />
+    <Compile Include="QueryModels\SubmitOrder.cs" />
+    <Compile Include="QueryModels\GenreList.cs" />
+    <Compile Include="QueryModels\UserInfo.cs" />
+    <Compile Include="QueryModels\ValidationParameters.cs" />
+    <Compile Include="QueryModels\ViewOrder.cs" />
+    <Compile Include="Query\AuthenticateServiceQry.cs" />
+    <Compile Include="Query\CartQuery.cs" />
+    <Compile Include="Query\DropListServiceQry.cs" />
+    <Compile Include="Query\OrdersQry.cs" />
+    <Compile Include="Query\StoreQry.cs" />
+    <Compile Include="Query\UserValidateQry.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\App.Data\App.Data.csproj">
+      <Project>{3226ba3b-132b-4d45-8591-a6bbb0cac9a0}</Project>
+      <Name>App.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,43 @@
+﻿@model App.Core.CommandModels.RegisterUser
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="@Url.Content("~/css/bootstrap.css")" rel="stylesheet" />
+
+    <!-- jQuery -->
+    <script src="@Url.Content("~/Scripts/jquery-1.9.1.js")"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="@Url.Content("~/Scripts/bootstrap.js")"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#backLink").click(function () {
+                event.preventDefault();
+                history.back(1);
+            });
+        });
+    </script>
+</head>
+<body>
+    <br /><br /><br /><br />
+    <div class="container">
+        <div class="row">
+            <div class="alert alert-danger fade in">
+                <strong>Error</strong>  Occured While Processing your Request.<br />
+                <br />
+                <a href="#" id="backLink">Go Back!</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

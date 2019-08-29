@@ -1,0 +1,117 @@
+﻿@model App.Core.QueryModels.ViewOrder
+
+@{
+    ViewBag.Title = "ViewOrder";
+}
+
+<div class="col-md-12">
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>
+                    <h4 style="color: rgb(209,117,129);"><b style="color:black;">Order View: </b>Shipping Information for Order Id: @Model.Order.OrderId</h4>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <b style="padding: 9px;">Name: </b><b style="font-weight:normal">@Model.Order.Name  </b>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <b style="padding: 9px;">Order Date: </b><b style="font-weight:normal">@Model.Order.OrderDate  </b>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <b style="padding: 9px;">Address: </b><b style="font-weight:normal">@Model.Order.Address  </b>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <b style="padding: 9px;">City: </b><b style="font-weight:normal">@Model.Order.City  </b>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <b style="padding: 9px;">State: </b><b style="font-weight:normal">@Model.Order.State  </b>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <b style="padding: 9px;">Postal Code: </b><b style="font-weight:normal">@Model.Order.PostalCode  </b>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <b style="padding: 9px;">Country: </b><b style="font-weight:normal">@Model.Order.Country  </b>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <b style="padding: 9px;">Phone: </b><b style="font-weight:normal">@Model.Order.Phone  </b>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <b style="padding: 9px;">Email: </b><b style="font-weight:normal">@Model.Order.Email  </b>
+                </th>
+            </tr>
+        </table>
+        <table class="table">
+            <tr>
+                <th colspan="3">
+                    <h4 style="color: rgb(209,117,129);"><b style="color:black;">Order View: </b>Items for Order Id: @Model.Order.OrderId</h4>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Album
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th style="text-align:right;">
+                    Price
+                </th>
+            </tr>
+            @{
+                decimal total = 0;
+            }
+            @foreach (var item in Model.OrderItems)
+            {
+                total = total + item.Price;
+                <tr>
+                    <td style="font-weight:normal;">
+                        @Html.DisplayFor(modelItem => item.Album)
+                    </td>
+                    <td style="font-weight:normal;">
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </td>
+                    <td style="text-align: right; font-weight: normal;">
+                        $ @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                </tr>
+            }
+            <tr>
+                <th>
+
+                </th>
+                <th style="text-align:right;">
+                    Total:
+                </th>
+                <th style="text-align:right;">
+                    $ @total
+                </th>
+            </tr>
+        </table>
+
+    </div>
+
+</div>
+
+
+
+
+
+
